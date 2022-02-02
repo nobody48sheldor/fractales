@@ -28,7 +28,7 @@ Mandelbrot's set and Julia's sets.
 
 - [C++] + [Python]
 
-``` sh compile.sh ``` 
+``` sh compile.sh ``` (needs g++ compiler)
 
 - full [Python]
 
