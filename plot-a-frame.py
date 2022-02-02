@@ -2,8 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import style
 from matplotlib import cm
-from mpl_toolkits.mplot3d import axes3d
-import time
 from matplotlib.backend_bases import MouseButton
 import os
 
@@ -11,7 +9,7 @@ style.use('dark_background')
 
 def clicked(event):
     if event.button is MouseButton.LEFT:
-        x, y = event.x, event.y
+        x, y = event.xdata, event.ydata
         print(x,y)
         with open("input.txt", "w+") as file:
             file.write("{}\n{}".format(x,y))
