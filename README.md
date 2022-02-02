@@ -1,6 +1,8 @@
 # Fractales
 Mandelbrot's set and Julia's sets.
+
 ![Mandelbrot set](render.png)
+
 ## description
 ### languages :
 -	Python
@@ -19,7 +21,9 @@ Mandelbrot's set and Julia's sets.
  - full [Python]
 	 - all in Python,easy to understand, but very slow
 ## how to install and run ?
+
 ``` git clone https://github.com/nobody48sheldor/fractales ```
+
 ``` cd fractales/ ```
 
 - [C++] + [Python]
@@ -29,6 +33,7 @@ Mandelbrot's set and Julia's sets.
 - full [Python]
 
 ``` cd full_python/ ```
+
 ``` python3 mandelbrot.py ``` or ``` python3 julia_set.py ```
 
 ## contribute
