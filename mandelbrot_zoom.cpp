@@ -4,14 +4,13 @@
 #include <fstream>
 #include <string>
 #include <complex>
-#include <sstream>
 
 using namespace std;
 
 int write_data(vector<vector<double>> data, int n)
 {
     ofstream output_file;
-    output_file.open("data_julia.txt");
+    output_file.open("data.txt");
     for (int ypos=0; ypos < n; ypos++)
     {
         //cout << ypos << endl;
@@ -44,40 +43,43 @@ auto Func(complex<double> z, complex<double> c)
 
 int main()
 {
-    int T = 200;
-    int n = 500;
+    int T = 400;
+    int n = 1000;
     int M;
     double re_c;
     double im_c;
     complex<double> z (0, 0);
+
+    double Xr;
+    double Yr;
+
     string line;
     string re;
     string im;
 
     fstream input_file;
 
-    input_file.open("input.txt",ios::in);
+    input_file.open("input_zoom.txt",ios::in);
     getline(input_file, re);
     getline(input_file, im);
     input_file.close();
 
 
-    re_c = stod(re);
-    cout << re_c <<endl;
-    re_c = 4*(re_c-(1000/2))/1000;
-    im_c = stod(im);
-    cout << im_c <<endl;
-    im_c = 4*(im_c-(1000/2))/1000;
+    Xr = stod(re);
+    cout << Xr <<endl;
+    Xr = 4*(Xr-(1000/2))/1000;
+    Yr = stod(im);
+    cout << Yr <<endl;
+    Yr = 4*(Yr-(1000/2))/1000;
 
-    cout <<re_c << " / " << im_c << endl;
-
+    cout << Xr << " / " << Yr << endl;
     vector<double> X;
     X.resize(n);
-    X = linspace(-2, 2, n);
+    X = linspace(Xr-0.04, Xr+0.04, n);
 
     vector<double> Y;
     Y.resize(n);
-    Y = linspace(-2, 2, n);
+    Y = linspace(Yr-0.04, Yr+0.04, n);
 
     vector<double> empty;
     empty.resize(n);
@@ -87,15 +89,14 @@ int main()
     vector<vector<double>> Mandelbrot_y;
     Mandelbrot_y.resize(n);
 
-    complex<double> c (re_c, im_c);
-
     for (int y = 0; y < n; y++)
     {
         // cout << "y = " << y << " / " << n << endl;
         Mandelbrot_x = empty;
         for (int x = 0; x < n; x++)
         {
-            complex<double> z (X[x],Y[y]);
+            complex<double> z (0,0);
+            complex<double> c (X[x],Y[y]);
             for (int i = 0; i < T; i++)
             {
                 z = Func(z, c);
@@ -112,9 +113,13 @@ int main()
             Mandelbrot_x[x] = M;
         }
         Mandelbrot_y[y] = Mandelbrot_x;
+        // if ((100*y)%n == 0)
+        // {
+            // cout << 100*y/n << " / " << "100" << endl;
+        // }
     }
     write_data(Mandelbrot_y, n);
-    system("python3 plot-a-frame_julia.py");
+    system("python3 plot-a-frame.py");
 
     return 0;
 }

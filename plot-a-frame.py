@@ -15,6 +15,13 @@ def clicked(event):
             file.write("{}\n{}".format(x,y))
         os.system("./julia_set-cpp")
 
+    if event.button is MouseButton.RIGHT:
+        x, y = event.xdata, event.ydata
+        print(x,y)
+        with open("input_zoom.txt", "w+") as filez:
+            filez.write("{}\n{}".format(x,y))
+        os.system("./mandelbrot_zoom-cpp")
+
 n = 1000
 
 X = []

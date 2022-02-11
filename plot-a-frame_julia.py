@@ -7,7 +7,7 @@ import time
 
 style.use('dark_background')
 
-n = 200
+n = 500
 
 X = []
 Y = []

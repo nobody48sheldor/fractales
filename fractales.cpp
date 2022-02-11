@@ -43,7 +43,7 @@ auto Func(complex<double> z, complex<double> c)
 
 int main()
 {
-    int T = 200;
+    int T = 400;
     int n = 1000;
     int M;
     double re_c;
