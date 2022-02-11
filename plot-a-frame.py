@@ -49,6 +49,6 @@ array = np.array(Y)
 
 plt.imshow(array)
 plt.title("Mandelbrot's set")
-plt.savefig("render.png")
+plt.savefig("render_test.png")
 plt.connect('button_press_event', clicked)
 plt.show()
